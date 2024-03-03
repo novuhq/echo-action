@@ -1,6 +1,6 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Sync Echo State'
+description: 'Sync state from your Echo deployment to Novu cloud'
+author: 'Novu'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
@@ -9,15 +9,21 @@ branding:
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  novuApiKey:
+    description: 'Your Novu API key'
     required: true
-    default: '1000'
+  echoUrl:
+    description: 'Your Echo deployment endpoint URL'
+    required: true
+  backendUrl:
+    description: 'Your Echo deployment endpoint URL'
+    required: false
+    default: 'https://api.novu.co'
 
 # Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  status:
+    description: 'The status of the sync'
 
 runs:
   using: node20
