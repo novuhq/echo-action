@@ -44,7 +44,7 @@ export async function syncState(echoUrl: string, novuApiKey: string, backendUrl:
     }
   });
 
-  const sync = await axios.post(backendUrl + '/v1/chimera/workflows', {
+  const sync = await axios.post(backendUrl + '/v1/chimera/sync?source=githubAction', {
     chimeraUrl: echoUrl,
     workflows: discover.data.workflows,
   }, {
