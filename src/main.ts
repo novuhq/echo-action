@@ -35,7 +35,7 @@ export async function syncState(
   backendUrl: string
 ): Promise<object> {
   const timestamp = Date.now()
-  const discover = await axios.get(`${echoUrl}/discover`, {
+  const discover = await axios.get(`${echoUrl}?action=discover`, {
     headers: {
       'x-novu-signature': `t=${timestamp},v1=${createHmac('sha256', novuApiKey)
         .update(`${timestamp}.${JSON.stringify({})}`)
@@ -44,7 +44,7 @@ export async function syncState(
   })
 
   const sync = await axios.post(
-    `${backendUrl}/v1/chimera/sync?source=githubAction`,
+    `${backendUrl}/v1/echo/sync?source=githubAction`,
     {
       chimeraUrl: echoUrl,
       workflows: discover.data.workflows
