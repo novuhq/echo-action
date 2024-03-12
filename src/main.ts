@@ -8,21 +8,26 @@ import { createHmac } from 'crypto'
  */
 export async function run(): Promise<void> {
   try {
-    const echoUrl: string = core.getInput('echoUrl')
+    const echoUrl: string = core.getInput('echo-url')
 
     // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
     core.debug(`Echo URL ${echoUrl} ...`)
 
     const inputs = {
-      novuApiKey: core.getInput('novuApiKey'),
-      echoUrl: core.getInput('echoUrl'),
-      backendUrl: core.getInput('backendUrl')
+      novuApiKey: core.getInput('novu-api-key'),
+      echoUrl: core.getInput('echo-url'),
+      backendUrl: core.getInput('backend-url')
     }
 
-    await syncState(inputs.echoUrl, inputs.novuApiKey, inputs.backendUrl)
+    const response = await syncState(
+      inputs.echoUrl,
+      inputs.novuApiKey,
+      inputs.backendUrl
+    )
 
     // Set outputs for other workflow steps to use
-    core.setOutput('status', true)
+    core.setOutput('result', response)
+    core.setOutput('success', true)
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)

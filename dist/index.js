@@ -6263,17 +6263,18 @@ const crypto_1 = __nccwpck_require__(6113);
  */
 async function run() {
     try {
-        const echoUrl = core.getInput('echoUrl');
+        const echoUrl = core.getInput('echo-url');
         // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
         core.debug(`Echo URL ${echoUrl} ...`);
         const inputs = {
-            novuApiKey: core.getInput('novuApiKey'),
-            echoUrl: core.getInput('echoUrl'),
-            backendUrl: core.getInput('backendUrl')
+            novuApiKey: core.getInput('novu-api-key'),
+            echoUrl: core.getInput('echo-url'),
+            backendUrl: core.getInput('backend-url')
         };
-        await syncState(inputs.echoUrl, inputs.novuApiKey, inputs.backendUrl);
+        const response = await syncState(inputs.echoUrl, inputs.novuApiKey, inputs.backendUrl);
         // Set outputs for other workflow steps to use
-        core.setOutput('status', true);
+        core.setOutput('result', response);
+        core.setOutput('success', true);
     }
     catch (error) {
         // Fail the workflow run if an error occurs

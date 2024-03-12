@@ -9,22 +9,23 @@ branding:
 
 # Define your inputs here.
 inputs:
-  novuApiKey:
+  novu-api-key:
     description: 'Your Novu API key'
     required: true
-  echoUrl:
+  echo-url:
     description: 'Your Echo deployment endpoint URL'
     required: true
-  backendUrl:
+  backend-url:
     description: 'Your Echo deployment endpoint URL'
     required: false
     default: 'https://api.novu.co'
 
 # Define your outputs here.
 outputs:
-  status:
+  success:
     description: 'The status of the sync'
-
+  result:
+    description: 'The sync result object'
 runs:
   using: node20
   main: dist/index.js
