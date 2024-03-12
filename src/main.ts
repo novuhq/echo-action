@@ -8,10 +8,10 @@ import { createHmac } from 'crypto'
  */
 export async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
+    const echoUrl: string = core.getInput('echoUrl')
 
     // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
+    core.debug(`Echo URL ${echoUrl} ...`)
 
     const inputs = {
       novuApiKey: core.getInput('novuApiKey'),
