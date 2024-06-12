@@ -1,6 +1,5 @@
 import * as core from '@actions/core'
 import axios from 'axios'
-import { createHmac } from 'crypto'
 
 /**
  * The main function for the action.
@@ -39,20 +38,10 @@ export async function syncState(
   novuApiKey: string,
   backendUrl: string
 ): Promise<object> {
-  const timestamp = Date.now()
-  const discover = await axios.get(`${echoUrl}?action=discover`, {
-    headers: {
-      'x-novu-signature': `t=${timestamp},v1=${createHmac('sha256', novuApiKey)
-        .update(`${timestamp}.${JSON.stringify({})}`)
-        .digest('hex')}`
-    }
-  })
-
   const sync = await axios.post(
     `${backendUrl}/v1/echo/sync?source=githubAction`,
     {
       chimeraUrl: echoUrl,
-      workflows: discover.data.workflows
     },
     {
       headers: {
