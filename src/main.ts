@@ -41,7 +41,7 @@ export async function syncState(
   const sync = await axios.post(
     `${backendUrl}/v1/echo/sync?source=githubAction`,
     {
-      chimeraUrl: echoUrl,
+      bridgeUrl: echoUrl,
     },
     {
       headers: {
