@@ -1,5 +1,5 @@
 {
-  "name": "@novuhq/echo-sync-action",
+  "name": "@novuhq/bridge-sync-action",
   "description": "GitHub Actions TypeScript template",
   "version": "0.0.0",
   "author": "",
