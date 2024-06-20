@@ -7,21 +7,21 @@ import axios from 'axios'
  */
 export async function run(): Promise<void> {
   try {
-    const echoUrl: string = core.getInput('echo-url')
+    const bridgeUrl: string = core.getInput('bridge-url')
 
     // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Echo URL ${echoUrl} ...`)
+    core.debug(`Bridge URL ${bridgeUrl} ...`)
 
     const inputs = {
       novuApiKey: core.getInput('novu-api-key'),
-      echoUrl: core.getInput('echo-url'),
-      backendUrl: core.getInput('backend-url')
+      bridgeUrl: core.getInput('bridge-url'),
+      apiUrl: core.getInput('api-url')
     }
 
     const response = await syncState(
-      inputs.echoUrl,
+      inputs.bridgeUrl,
       inputs.novuApiKey,
-      inputs.backendUrl
+      inputs.apiUrl
     )
 
     // Set outputs for other workflow steps to use
@@ -34,14 +34,14 @@ export async function run(): Promise<void> {
 }
 
 export async function syncState(
-  echoUrl: string,
+  bridgeUrl: string,
   novuApiKey: string,
-  backendUrl: string
+  apiUrl: string
 ): Promise<object> {
   const sync = await axios.post(
-    `${backendUrl}/v1/echo/sync?source=githubAction`,
+    `${apiUrl}/v1/bridge/sync?source=githubAction`,
     {
-      bridgeUrl: echoUrl,
+      bridgeUrl
     },
     {
       headers: {

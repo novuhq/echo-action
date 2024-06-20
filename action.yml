@@ -1,5 +1,5 @@
-name: 'Sync Echo State'
-description: 'Sync state from your Echo deployment to Novu cloud'
+name: 'Sync Bridge State'
+description: 'Sync state from your Bridge deployment to Novu cloud'
 author: 'Novu'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
@@ -12,11 +12,11 @@ inputs:
   novu-api-key:
     description: 'Your Novu API key'
     required: true
-  echo-url:
-    description: 'Your Echo deployment endpoint URL'
+  bridge-url:
+    description: 'Your Bridge deployment endpoint URL'
     required: true
-  backend-url:
-    description: 'Your Echo deployment endpoint URL'
+  api-url:
+    description: 'Your Novu cloud API base URL'
     required: false
     default: 'https://api.novu.co'
 

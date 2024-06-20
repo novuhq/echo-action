@@ -6263,15 +6263,15 @@ const crypto_1 = __nccwpck_require__(6113);
  */
 async function run() {
     try {
-        const echoUrl = core.getInput('echo-url');
+        const bridgeUrl = core.getInput('bridge-url');
         // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-        core.debug(`Echo URL ${echoUrl} ...`);
+        core.debug(`Bridge URL ${bridgeUrl} ...`);
         const inputs = {
             novuApiKey: core.getInput('novu-api-key'),
-            echoUrl: core.getInput('echo-url'),
-            backendUrl: core.getInput('backend-url')
+            bridgeUrl: core.getInput('bridge-url'),
+            apiUrl: core.getInput('api-url')
         };
-        const response = await syncState(inputs.echoUrl, inputs.novuApiKey, inputs.backendUrl);
+        const response = await syncState(inputs.bridgeUrl, inputs.novuApiKey, inputs.apiUrl);
         // Set outputs for other workflow steps to use
         core.setOutput('result', response);
         core.setOutput('success', true);
@@ -6283,17 +6283,17 @@ async function run() {
     }
 }
 exports.run = run;
-async function syncState(echoUrl, novuApiKey, backendUrl) {
+async function syncState(bridgeUrl, novuApiKey, apiUrl) {
     const timestamp = Date.now();
-    const discover = await axios_1.default.get(`${echoUrl}?action=discover`, {
+    const discover = await axios_1.default.get(`${bridgeUrl}?action=discover`, {
         headers: {
             'x-novu-signature': `t=${timestamp},v1=${(0, crypto_1.createHmac)('sha256', novuApiKey)
                 .update(`${timestamp}.${JSON.stringify({})}`)
                 .digest('hex')}`
         }
     });
-    const sync = await axios_1.default.post(`${backendUrl}/v1/echo/sync?source=githubAction`, {
-        chimeraUrl: echoUrl,
+    const sync = await axios_1.default.post(`${apiUrl}/v1/bridge/sync?source=githubAction`, {
+        bridgeUrl,
         workflows: discover.data.workflows
     }, {
         headers: {
