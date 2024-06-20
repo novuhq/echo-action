@@ -6256,7 +6256,6 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.syncState = exports.run = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const axios_1 = __importDefault(__nccwpck_require__(8757));
-const crypto_1 = __nccwpck_require__(6113);
 /**
  * The main function for the action.
  * @returns {Promise<void>} Resolves when the action is complete.
@@ -6284,17 +6283,8 @@ async function run() {
 }
 exports.run = run;
 async function syncState(bridgeUrl, novuApiKey, apiUrl) {
-    const timestamp = Date.now();
-    const discover = await axios_1.default.get(`${bridgeUrl}?action=discover`, {
-        headers: {
-            'x-novu-signature': `t=${timestamp},v1=${(0, crypto_1.createHmac)('sha256', novuApiKey)
-                .update(`${timestamp}.${JSON.stringify({})}`)
-                .digest('hex')}`
-        }
-    });
     const sync = await axios_1.default.post(`${apiUrl}/v1/bridge/sync?source=githubAction`, {
-        bridgeUrl,
-        workflows: discover.data.workflows
+        bridgeUrl
     }, {
         headers: {
             'Content-Type': 'application/json',
