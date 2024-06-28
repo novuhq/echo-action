@@ -1,7 +1,9 @@
 # Novu Sync v2
+
 This action syncs your state with the Novu Cloud.
 
 ## Using the Action in your CI
+
 ```yaml
 - uses: novuhq/actions-novu-sync@v2.0.0
   with:
@@ -11,9 +13,11 @@ This action syncs your state with the Novu Cloud.
     # where entities (eg. workflows) are defined
     bridge-url: [BRIDGE_ENDPOINT_URL]
 ```
+
 ## Outputs
 
 The command exposes 2 outputs:
+
 1. `success`: a boolean flag indicating the success status of the action execution
 1. `result`: the response data sent from Novu Cloud after the sync request
 
@@ -30,7 +34,6 @@ The command exposes 2 outputs:
    ```bash
    npm run all
    ```
-
 
 ## Publishing a New Release
 
