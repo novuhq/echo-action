@@ -1,21 +1,21 @@
 {
-  "name": "@novuhq/bridge-sync-action",
+  "name": "@novuhq/novu-sync-action",
   "description": "GitHub Actions TypeScript template",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "author": "",
   "private": true,
-  "homepage": "https://github.com/actions/typescript-action",
+  "homepage": "https://github.com/novuhq/actions-novu-sync",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/novuhq/actions-novu-sync.git"
   },
   "bugs": {
-    "url": "https://github.com/actions/typescript-action/issues"
+    "url": "https://github.com/novuhq/actions-novu-sync/issues"
   },
   "keywords": [
     "actions",
-    "node",
-    "setup"
+    "novu",
+    "sync"
   ],
   "exports": {
     ".": "./dist/index.js"
@@ -26,14 +26,13 @@
   "scripts": {
     "bundle": "npm run format:write && npm run package",
     "ci-test": "echo 'test'",
-    "coverage": "make-coverage-badge --output-path ./badges/coverage.svg",
     "format:write": "prettier --write **/*.ts",
     "format:check": "prettier --check **/*.ts",
     "lint": "npx eslint . -c ./.github/linters/.eslintrc.yml",
     "package": "ncc build src/index.ts --license licenses.txt",
     "package:watch": "npm run package -- --watch",
-    "test": "jest",
-    "all": "npm run format:write && npm run lint && npm run test && npm run coverage && npm run package"
+    "test": "jest --passWithNoTests",
+    "all": "npm run format:write && npm run lint && npm run test && npm run package"
   },
   "license": "MIT",
   "jest": {
@@ -81,7 +80,6 @@
     "eslint-plugin-jsonc": "^2.13.0",
     "eslint-plugin-prettier": "^5.1.3",
     "jest": "^29.7.0",
-    "make-coverage-badge": "^1.2.0",
     "prettier": "^3.2.5",
     "prettier-eslint": "^16.3.0",
     "ts-jest": "^29.1.2",

@@ -9,14 +9,14 @@ branding:
 
 # Define your inputs here.
 inputs:
-  novu-api-key:
-    description: 'Your Novu API key'
+  secret-key:
+    description: 'Your Novu secret key'
     required: true
   bridge-url:
     description: 'Your Bridge deployment endpoint URL'
     required: true
   api-url:
-    description: 'Your Novu cloud API base URL'
+    description: 'The Novu Cloud API URL'
     required: false
     default: 'https://api.novu.co'
 
