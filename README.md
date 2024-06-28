@@ -1,4 +1,22 @@
-# Novu Sync GitHub Action
+# Novu Sync v2
+This action syncs your state with the Novu Cloud.
+
+## Using the Action in your CI
+```yaml
+- uses: novuhq/actions-novu-sync@v2.0.0
+  with:
+    # The secret key used to authenticate against the Novu cloud
+    secret-key: [NOVU_SECRET_KEY]
+    # The publicly available endpoint hosting the bridge application
+    # where entities (eg. workflows) are defined
+    bridge-url: [BRIDGE_ENDPOINT_URL]
+```
+## Outputs
+
+The command exposes 2 outputs:
+1. `success`: a boolean flag indicating the success status of the action execution
+1. `result`: the response data sent from Novu Cloud after the sync request
+
 ## Developing the action further
 
 1. :hammer_and_wrench: Install the dependencies
@@ -13,25 +31,6 @@
    npm run all
    ```
 
-## Using the Action in your CI
-
-```yaml
-steps:
-  - name: Checkout
-    id: checkout
-    uses: actions/checkout@v4
-
-  - name: Novu Sync Action
-    id: novu-sync-action
-    uses: novuhq/actions-novu-sync@v0.0.4
-    with:
-      secret-key: [NOVU_SECRET_KEY]
-      bridge-url: [BRIDGE_ENDPOINT_URL]
-
-  - name: Print Success status
-    id: output
-    run: echo "${{ steps.novu-sync-action.outputs.success }}"
-```
 
 ## Publishing a New Release
 
