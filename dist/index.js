@@ -6283,8 +6283,11 @@ async function run() {
     }
     catch (error) {
         // Fail the workflow run if an error occurs
-        if (error instanceof Error)
+        if (error instanceof Error) {
             core.setFailed(error.message);
+        }
+        core.setOutput('result', {});
+        core.setOutput('success', false);
     }
 }
 exports.run = run;
