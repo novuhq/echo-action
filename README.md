@@ -1,17 +1,52 @@
-# Novu Sync v2
+# Novu Sync Action V2
 
-This action syncs your state with the Novu Cloud.
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/novuhq/actions-novu-sync/ci.yml)
 
-## Using the Action in your CI
+This action syncs your state with Novu Cloud.
+
+## What's new
+
+Please refer to the [release page](https://github.com/novuhq/actions-novu-sync/releases/latest)
+for the latest release notes.
+
+## Usage
 
 ```yaml
-- uses: novuhq/actions-novu-sync@v2.0.0
+- uses: novuhq/actions-novu-sync@v2
   with:
-    # The secret key used to authenticate against the Novu cloud
-    secret-key: [NOVU_SECRET_KEY]
+    # The secret key used to authenticate with Novu Cloud
+    # To get the secret key, go to https://web.novu.co/api-keys.
+    # Required.
+    secret-key: ${{ secrets.NOVU_SECRET_KEY }}
+
     # The publicly available endpoint hosting the bridge application
-    # where entities (eg. workflows) are defined
-    bridge-url: [BRIDGE_ENDPOINT_URL]
+    # where notification entities (eg. workflows, topics) are defined.
+    # Required.
+    bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
+
+    # The Novu Cloud API URL to sync with.
+    # Optional.
+    # Defaults to https://api.novu.co
+    api-url: https://api.novu.co
+```
+
+### Sync with Novu Cloud
+
+```yaml
+- uses: novuhq/actions-novu-sync@v2
+  with:
+    secret-key: ${{ secrets.NOVU_SECRET_KEY }}
+    bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
+```
+
+### Sync with Novu Cloud EU region
+
+```yaml
+- uses: novuhq/actions-novu-sync@v2
+  with:
+    secret-key: ${{ secrets.NOVU_SECRET_KEY }}
+    bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
+    api-url: https://eu.api.novu.co
 ```
 
 ## Outputs
@@ -23,13 +58,13 @@ The command exposes 2 outputs:
 
 ## Developing the action further
 
-1. :hammer_and_wrench: Install the dependencies
+1. 🔨 Install the dependencies
 
    ```bash
    npm install
    ```
 
-1. :building_construction: Lint, test and package the TypeScript for distribution
+1. 🏗️ Lint, test and package the TypeScript for distribution
 
    ```bash
    npm run all
