@@ -11,7 +11,7 @@
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/novuhq/actions-novu-sync/ci.yml)
 
-This action syncs your state with the Novu Cloud.
+This action syncs your state with Novu Cloud.
 
 ## Using the Action in your CI
 
