@@ -6,7 +6,7 @@ This action syncs your state with Novu Cloud.
 
 ## Using the Action in your CI
 
-Common usage:
+### Sync with Novu Cloud:
 
 ```yaml
 - uses: novuhq/actions-novu-sync@v2
@@ -19,7 +19,7 @@ Common usage:
     bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
 ```
 
-Connecting to Novu EU region:
+### Sync with Novu Cloud EU region:
 
 ```yaml
 - uses: novuhq/actions-novu-sync@v2
