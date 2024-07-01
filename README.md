@@ -49,7 +49,7 @@ The command exposes 2 outputs:
    npm install
    ```
 
-2. 🏗️ Lint, test and package the TypeScript for distribution
+1. 🏗️ Lint, test and package the TypeScript for distribution
 
    ```bash
    npm run all
