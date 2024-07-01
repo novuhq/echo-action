@@ -4,7 +4,11 @@
 
 This action syncs your state with Novu Cloud.
 
-## Using the Action in your CI
+# What's new
+
+Please refer to the [release page](https://github.com/novuhq/actions-novu-sync/releases/latest) for the latest release notes.
+
+# Usage
 
 ### Sync with Novu Cloud:
 
