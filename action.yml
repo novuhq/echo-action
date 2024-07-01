@@ -1,11 +1,11 @@
-name: 'Sync Bridge State'
-description: 'Sync state from your Bridge deployment to Novu cloud'
+name: 'Sync Novu State'
+description: 'This action syncs your state with Novu Cloud.'
 author: 'Novu'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'heart'
-  color: 'red'
+  icon: 'message-circle'
+  color: 'white'
 
 # Define your inputs here.
 inputs:
