@@ -10,7 +10,7 @@ Please refer to the [release page](https://github.com/novuhq/actions-novu-sync/r
 
 # Usage
 
-### Sync with Novu Cloud:
+## Sync with Novu Cloud:
 
 ```yaml
 - uses: novuhq/actions-novu-sync@v2
@@ -23,7 +23,7 @@ Please refer to the [release page](https://github.com/novuhq/actions-novu-sync/r
     bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
 ```
 
-### Sync with Novu Cloud EU region:
+## Sync with Novu Cloud EU region:
 
 ```yaml
 - uses: novuhq/actions-novu-sync@v2
