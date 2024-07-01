@@ -1,8 +1,8 @@
 {
   "name": "@novuhq/novu-sync-action",
-  "description": "GitHub Actions TypeScript template",
+  "description": "Novu Sync Action",
   "version": "2.0.0",
-  "author": "",
+  "author": "Novu Team <engineering@novu.co>",
   "private": true,
   "homepage": "https://github.com/novuhq/actions-novu-sync",
   "repository": {

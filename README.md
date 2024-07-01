@@ -1,17 +1,44 @@
-# Novu Sync v2
+<div align="center">
+  <a href="https://novu.co?utm_source=github" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/2233092/213641039-220ac15f-f367-4d13-9eaf-56e79433b8c1.png">
+    <img alt="Novu Logo" src="https://user-images.githubusercontent.com/2233092/213641043-3bbb3f21-3c53-4e67-afe5-755aeb222159.png" width="280"/>
+  </picture>
+  </a>
+</div>
+
+# Novu Sync Action V4
+
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/novuhq/actions-novu-sync/ci.yml)
 
 This action syncs your state with the Novu Cloud.
 
 ## Using the Action in your CI
 
+Common usage:
 ```yaml
-- uses: novuhq/actions-novu-sync@v2.0.0
+- uses: novuhq/actions-novu-sync@v2
   with:
-    # The secret key used to authenticate against the Novu cloud
-    secret-key: [NOVU_SECRET_KEY]
+    # The secret key used to authenticate with Novu cloud
+    # To get the secret key, go to https://web.novu.co/api-keys.
+    secret-key: ${{ secrets.NOVU_SECRET_KEY }}
     # The publicly available endpoint hosting the bridge application
-    # where entities (eg. workflows) are defined
-    bridge-url: [BRIDGE_ENDPOINT_URL]
+    # where notification entities (eg. workflows, topics) are defined.
+    bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
+```
+
+Connecting to Novu EU region:
+```yaml
+- uses: novuhq/actions-novu-sync@v2
+  with:
+    # The secret key used to authenticate with Novu cloud
+    # To get the secret key, go to https://web.novu.co/api-keys.
+    secret-key: ${{ secrets.NOVU_SECRET_KEY }}
+    # The publicly available endpoint hosting the bridge application
+    # where notification entities (eg. workflows, topics) are defined
+    bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
+    # The API endpoint to use
+    api-url: https://api.eu.novu.co
 ```
 
 ## Outputs
@@ -23,13 +50,13 @@ The command exposes 2 outputs:
 
 ## Developing the action further
 
-1. :hammer_and_wrench: Install the dependencies
+1. 🔨 Install the dependencies
 
    ```bash
    npm install
    ```
 
-1. :building_construction: Lint, test and package the TypeScript for distribution
+2. 🏗️ Lint, test and package the TypeScript for distribution
 
    ```bash
    npm run all
