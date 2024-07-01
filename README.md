@@ -31,7 +31,7 @@ Connecting to Novu EU region:
     # where notification entities (eg. workflows, topics) are defined
     bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
     # The Novu Cloud API endpoint to sync with.
-    api-url: https://api.eu.novu.co
+    api-url: https://eu.api.novu.co
 ```
 
 ## Outputs
