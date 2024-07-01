@@ -10,16 +10,31 @@ Please refer to the [release page](https://github.com/novuhq/actions-novu-sync/r
 
 # Usage
 
-## Sync with Novu Cloud:
-
 ```yaml
 - uses: novuhq/actions-novu-sync@v2
   with:
     # The secret key used to authenticate with Novu Cloud
     # To get the secret key, go to https://web.novu.co/api-keys.
+    # Required.
     secret-key: ${{ secrets.NOVU_SECRET_KEY }}
+
     # The publicly available endpoint hosting the bridge application
     # where notification entities (eg. workflows, topics) are defined.
+    # Required.
+    bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
+
+    # The Novu Cloud API URL to sync with.
+    # Optional.
+    # Defaults to https://api.novu.co
+    api-url: https://api.novu.co
+```
+
+## Sync with Novu Cloud:
+
+```yaml
+- uses: novuhq/actions-novu-sync@v2
+  with:
+    secret-key: ${{ secrets.NOVU_SECRET_KEY }}
     bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
 ```
 
@@ -28,13 +43,8 @@ Please refer to the [release page](https://github.com/novuhq/actions-novu-sync/r
 ```yaml
 - uses: novuhq/actions-novu-sync@v2
   with:
-    # The secret key used to authenticate with Novu Cloud
-    # To get the secret key, go to https://web.novu.co/api-keys.
     secret-key: ${{ secrets.NOVU_SECRET_KEY }}
-    # The publicly available endpoint hosting the bridge application
-    # where notification entities (eg. workflows, topics) are defined.
     bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
-    # The Novu Cloud API URL to sync with.
     api-url: https://eu.api.novu.co
 ```
 
