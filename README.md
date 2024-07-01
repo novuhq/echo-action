@@ -7,7 +7,7 @@
   </a>
 </div>
 
-# Novu Sync Action V4
+# Novu Sync Action V2
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/novuhq/actions-novu-sync/ci.yml)
 
