@@ -11,7 +11,7 @@ Common usage:
 ```yaml
 - uses: novuhq/actions-novu-sync@v2
   with:
-    # The secret key used to authenticate with Novu cloud
+    # The secret key used to authenticate with Novu Cloud
     # To get the secret key, go to https://web.novu.co/api-keys.
     secret-key: ${{ secrets.NOVU_SECRET_KEY }}
     # The publicly available endpoint hosting the bridge application
@@ -24,13 +24,13 @@ Connecting to Novu EU region:
 ```yaml
 - uses: novuhq/actions-novu-sync@v2
   with:
-    # The secret key used to authenticate with Novu cloud
+    # The secret key used to authenticate with Novu Cloud
     # To get the secret key, go to https://web.novu.co/api-keys.
     secret-key: ${{ secrets.NOVU_SECRET_KEY }}
     # The publicly available endpoint hosting the bridge application
     # where notification entities (eg. workflows, topics) are defined
     bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
-    # The API endpoint to use
+    # The Novu Cloud API endpoint to sync with.
     api-url: https://api.eu.novu.co
 ```
 
