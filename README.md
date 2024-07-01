@@ -30,7 +30,7 @@ for the latest release notes.
     api-url: https://api.novu.co
 ```
 
-### Sync with Novu Cloud:
+### Sync with Novu Cloud
 
 ```yaml
 - uses: novuhq/actions-novu-sync@v2
@@ -39,7 +39,7 @@ for the latest release notes.
     bridge-url: ${{ secrets.NOVU_BRIDGE_URL }}
 ```
 
-### Sync with Novu Cloud EU region:
+### Sync with Novu Cloud EU region
 
 ```yaml
 - uses: novuhq/actions-novu-sync@v2
