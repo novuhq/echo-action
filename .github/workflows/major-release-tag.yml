@@ -1,0 +1,32 @@
+# see https://gist.github.com/cicirello/ade1d559a89104140557389365154bc1
+# This action updates forcefully updates and pushes the major release Git tag
+# to the latest release version.
+#
+# This ensures Github action users can use the major release tag to trigger
+# workflows for a given major release, whilst receiving updates from minor and
+# patch releases.
+#
+# Example: v2.0.4 -> v2
+# Example: v2.1.0 -> v2
+
+name: Update Major Release Tag
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  movetag:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Get major version num and update tag
+      run: |
+        VERSION=${GITHUB_REF#refs/tags/}
+        MAJOR=${VERSION%%.*}
+        git config --global user.name 'novu-bot'
+        git config --global user.email 'novu-bot@users.noreply.github.com'
+        git tag -fa "${MAJOR}" -m 'Update major version tag'
+        git push origin "${MAJOR}" --force
